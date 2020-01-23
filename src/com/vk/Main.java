@@ -232,8 +232,37 @@ public class Main {
 //        Output: 3
 //        Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
 
-        System.out.println("possible decoding ways: "+decodeToString("12345"));
+//        System.out.println("possible decoding ways: "+decodeToString("12345"));
 
+
+        int[] a = {2,0,-11,0};
+        moveZeros(a);
+        for(int i = 0; i < a.length; i++){
+            System.out.print(a[i] + ",");
+        }
+
+    }
+
+    private static void moveZeros(int[] a) {
+        int start = 0;
+        int end = a.length-1;
+
+        while(start < end) {
+            if(a[start] == 0){
+                shiftLeft(a, start+1, end);
+                a[end] = 0;
+                end--;
+                if(a[start] != 0){
+                    start++;
+                }
+            } else {
+                start++;
+            }
+        }
+    }
+
+    private static void shiftLeft(int[] a, int start, int end) {
+        System.arraycopy(a, start, a, start - 1, end + 1 - start);
 
     }
 
